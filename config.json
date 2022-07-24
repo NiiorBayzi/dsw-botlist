@@ -1,5 +1,5 @@
 {
-    "mongo_url": process.env.MONGO_URL,
+    "mongo_url": "",
     "server": {
         "id": "998268783602966528",
         "invite": "https://discord.gg/CDksyzH2Rw",
@@ -25,17 +25,17 @@
     },
     "discord_client": {
         "id": "998718028525080616",
-        "secret": process.env.SECRET,
-        "token": process.env.TOKEN,
+        "secret": "",
+        "token": "",
         "prefix": "ds."
     },
     "web": {
         "domain_with_protocol": "https://dsw-botlist.herokuapp.com/",
-        "port": process.env.PORT,
+        "port": "",
         "ratelimit": 30,
         "recaptcha_v2": {
-            "site_key": process.env.RESITE,
-            "secret_key": process.env.RE_SECRET
+            "site_key": "",
+            "secret_key": ""
         }
     }
 }
