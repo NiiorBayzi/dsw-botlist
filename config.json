@@ -31,7 +31,7 @@
     },
     "web": {
         "domain_with_protocol": "https://dsw-botlist.herokuapp.com/",
-        "port": 80,
+        "port": process.env.PORT,
         "ratelimit": 30,
         "recaptcha_v2": {
             "site_key": "",
