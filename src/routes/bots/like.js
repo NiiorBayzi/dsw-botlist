@@ -3,7 +3,8 @@ const { auth } = require('@utils/discordApi')
 const Bots = require("@models/bots");
 const Users = require("@models/users");
 
-const { web: { recaptcha_v2: { site_key } } } = require("@root/config.json");
+let { web: { recaptcha_v2: { site_key } } } = require("@root/config.json");
+site_key = process.env.RESITE;
 
 const route = Router();
 
