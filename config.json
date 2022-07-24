@@ -16,7 +16,7 @@
         }
     },
     "bot_options": {
-        "bot_tags": [],
+        "bot_tags": ["Diversão", "Utilidades", "Moderação", "Economia", "Multi-funcional", "RPG", "Mini-games", "Tycoon"],
         "max_bot_tags": 6,
         "max_owners_count": 4,
         "max_summary_length": 120,
