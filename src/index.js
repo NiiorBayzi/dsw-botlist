@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 
 const bot = require('@bot/index');
 const App = require('@structures/app.js');
-const { web: {port}, discord_client: {token}, mongo_url } = require("@root/config.json");
+let { web: {port}, discord_client: {token}, mongo_url } = require("@root/config.json");
 port = process.env.PORT;
 mongo_url = process.env.MONGO_URL;
 token = process.env.TOKEN;
