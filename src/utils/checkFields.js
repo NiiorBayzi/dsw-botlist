@@ -1,7 +1,7 @@
 const recaptcha2 = require('recaptcha2')
 const is = require('is-html');
 
-const { server: { id }, bot_options: {
+let { server: { id }, bot_options: {
     max_owners_count,
     max_bot_tags,
     bot_tags,
@@ -9,6 +9,8 @@ const { server: { id }, bot_options: {
     min_description_length,
     max_description_length
 }, web: { recaptcha_v2: { site_key, secret_key } } } = require("@root/config.json");
+site_key = process.env.RESITE;
+secret_key = process.env.RE_SECRET;
 
 const recaptcha = new recaptcha2({
     siteKey: site_key,
