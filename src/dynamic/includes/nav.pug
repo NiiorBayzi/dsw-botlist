@@ -4,7 +4,7 @@
             img(src='/assets/img/logo.png')
     span.navtag
         a(href="/")
-            span.navtext.keep Discord Bot List
+            span.navtext.keep Dark Side World
         include arrow.pug
         if (bot && !site_key) 
             a(href=`/bots/${bot.botid}`)
@@ -21,21 +21,21 @@
     a#searcher.navtag.keep.search(href='/bots/search/')
         #search.navtext
             i.fas.fa-search
-            |  Search
+            |  Pesquisar
     span.dropdown
         if (req.user)
             a#login.navtag.keep(href='/login') #{req.user.username}##{req.user.discriminator}
             span.dd-content
-                a(href='/join' target='_blank') Join Server
+                a(href='/join' target='_blank') Juntar-se
                 br
-                a(href='/add') Add bot
+                a(href='/add') Adicionar Bot
                 br
-                a(href='/api/theme') Toggle Theme
+                a(href='/api/theme') Mudar Tema
                 br
-                a(href='/about') About
+                a(href='/about') Sobre 
                 if (req.user.staff)
                     br
-                    a(href='/admin') Dashboard
+                    a(href='/admin') Painel
                 br
                 a(href='/logout') Logout
         else
