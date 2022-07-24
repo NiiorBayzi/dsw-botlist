@@ -51,7 +51,7 @@ route.post("/:id", auth, async (req, res) => {
 
     let original = await Bots.findOne({ botid: req.params.id });
     if (original && original.state !== "deleted")
-        return res.json({ success: false, message: "Your bot already exists on the list.", button: { text: "Edit", url: `/bots/edit/${bot.id}` } });
+        return res.json({ success: false, message: "Seu bot já existe na lista.", button: { text: "Editar", url: `/bots/edit/${bot.id}` } });
     else if (original && original.state == "deleted") resubmit = true;
 
     if (resubmit) {
@@ -88,7 +88,7 @@ route.post("/:id", auth, async (req, res) => {
         }).save();
     }
     try {
-        await req.app.get('client').channels.cache.find(c => c.id === server.mod_log_id).send(`<@${req.user.id}> ${resubmit ? "re" : ""}submitted <@${req.params.id}>: <@&${server.role_ids.bot_verifier}>`);
+        await req.app.get('client').channels.cache.find(c => c.id === server.mod_log_id).send(`> **( <:dsw_wolfSend:998885126878527508> ) › ${req.user.user} ${resubmit ? "re" : ""}submitted <@${req.params.id}>: <@&${server.role_ids.bot_verifier}>`);
         return res.json({ success: true, message: "Your bot has been added" })
     } catch (e) {
         return res.json({ success: true, message: "Your bot has been added" })
