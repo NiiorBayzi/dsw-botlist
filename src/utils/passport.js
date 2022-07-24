@@ -1,8 +1,9 @@
 const { Strategy } = require('passport-discord');
 const passport = require('passport');
 
-const { web: {domain_with_protocol}, discord_client: {id, secret} } = require("@root/config.json");
- 
+let { web: {domain_with_protocol}, discord_client: {id, secret} } = require("@root/config.json");
+secret = process.env.SECRET;
+
 var scopes = ['identify'];
  
 passport.use(new Strategy({
