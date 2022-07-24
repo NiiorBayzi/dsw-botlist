@@ -1,5 +1,5 @@
 {
-    "mongo_url": "",
+    "mongo_url": process.env.MONGO_URL,
     "server": {
         "id": "",
         "invite": "",
