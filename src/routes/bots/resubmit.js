@@ -2,7 +2,8 @@ const { Router } = require("express");
 const { auth } = require('@utils/discordApi')
 const Bots = require("@models/bots");
 
-const { web: {recaptcha_v2: {site_key}}, bot_options: {bot_tags, max_summary_length}} = require("@root/config.json");
+let { web: {recaptcha_v2: {site_key}}, bot_options: {bot_tags, max_summary_length}} = require("@root/config.json");
+site_key = process.env.RESITE;
 
 const route = Router();
 
