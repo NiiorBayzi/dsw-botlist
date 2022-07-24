@@ -4,7 +4,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const passport = require("passport");
 
-const { discord_client: {secret} } = require("@root/config.json");
+let { discord_client: {secret} } = require("@root/config.json");
+secret = process.env.SECRET;
 
 require("@utils/passport.js");
 
