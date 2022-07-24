@@ -30,7 +30,7 @@
         "prefix": "ds."
     },
     "web": {
-        "domain_with_protocol": "https://dsw-botlist.herokuapp.com/",
+        "domain_with_protocol": "https://dsw-botlist.herokuapp.com",
         "port": "",
         "ratelimit": 30,
         "recaptcha_v2": {
