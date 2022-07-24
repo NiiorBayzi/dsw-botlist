@@ -34,8 +34,8 @@
         "port": process.env.PORT,
         "ratelimit": 30,
         "recaptcha_v2": {
-            "site_key": "",
-            "secret_key": ""
+            "site_key": process.env.RESITE,
+            "secret_key": process.env.RE_SECRET
         }
     }
 }
