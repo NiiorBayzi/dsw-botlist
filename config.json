@@ -1,18 +1,18 @@
 {
     "mongo_url": process.env.MONGO_URL,
     "server": {
-        "id": "",
-        "invite": "",
-        "mod_log_id": "",
-        "like_log": "",
-        "admin_user_ids": [],
+        "id": "998268783602966528",
+        "invite": "https://discord.gg/CDksyzH2Rw",
+        "mod_log_id": "1000752201804816465",
+        "like_log": "1000752322789527642",
+        "admin_user_ids": ["916712541797896263", "987772648933183600"],
         "role_ids": {
-            "bot": "",
-            "unverified": "",
-            "verified": "",
+            "bot": "998270353631617024",
+            "unverified": "998270368353632349",
+            "verified": "998270366592028772",
 
-            "bot_developer": "",
-            "bot_verifier": ""
+            "bot_developer": "998270364612300811",
+            "bot_verifier": "998270351945502770"
         }
     },
     "bot_options": {
@@ -24,10 +24,10 @@
         "max_description_length": 500
     },
     "discord_client": {
-        "id": "",
-        "secret": "",
-        "token": "",
-        "prefix": ""
+        "id": "998718028525080616",
+        "secret": process.env.SECRET,
+        "token": process.env.TOKEN,
+        "prefix": "ds."
     },
     "web": {
         "domain_with_protocol": "",
