@@ -52,7 +52,7 @@ body(onload="load()")
                 .placeholder Apenas o proprietário principal pode editar proprietários adicionais.
             br
             .center-inline.g-recaptcha(data-callback='update_token' data-sitekey=site_key data-theme=req.cookies["theme"] || "light")
-            a.button.submit-btn(onclick='submit()') Submit
+            a.button.submit-btn(onclick='submit()') Enviar
             br
         #links.section
           form.center
@@ -82,8 +82,8 @@ body(onload="load()")
 
         #server-count.section
           span
-            a#auth.mini-btn.button Get Authorization token
-            a#reset.mini-btn.button Reset Authorization token
+            a#auth.mini-btn.button Obter Token de Autorização
+            a#reset.mini-btn.button Redefinir Token de Autorização
         
         #manage.section
-          a.mini-btn.button.button-red.delete(href="#confirm" data-id=bot.botid data-name=bot.username) Delete Bot
+          a.mini-btn.button.button-red.delete(href="#confirm" data-id=bot.botid data-name=bot.username) Deletar Bot
