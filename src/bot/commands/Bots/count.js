@@ -10,14 +10,14 @@ module.exports = class extends Command {
             permLevel: 0,
             botPerms: ["SEND_MESSAGES"],
             requiredSettings: [],
-            description: "Check how many bots there are in the list."
+            description: "Veja quantos bots já possuímos."
         });
     }
 
     async run(message) {
         let bots = await Bots.find({}, { _id: false })
         bots = bots.filter(bot => bot.state !== "deleted");
-        if (bots.length === 1) message.channel.send(`There is \`1\` bot in the list.`)
-        else message.channel.send(`There are \`${bots.length}\` bots in the list.`)
+        if (bots.length === 1) message.channel.send(`( <:dsw_community:998275127122874428> ) › Possuímos \`1 Bots\` em nossa botlist.`)
+        else message.channel.send(`( <:dsw_community:998275127122874428> ) › Possuímos \`${bots.length} Bots\` em nossa botlist.`)
     }
 };
