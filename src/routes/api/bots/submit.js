@@ -88,10 +88,10 @@ route.post("/:id", auth, async (req, res) => {
         }).save();
     }
     try {
-        await req.app.get('client').channels.cache.find(c => c.id === server.mod_log_id).send(`> **( <:dsw_wolfSend:998885126878527508> ) › ${req.user.user} ${resubmit ? "re" : ""}submitted <@${req.params.id}>: <@&${server.role_ids.bot_verifier}>`);
-        return res.json({ success: true, message: "Your bot has been added" })
+        await req.app.get('client').channels.cache.find(c => c.id === server.mod_log_id).send(`> **( <:dsw_wolfSend:998885126878527508> ) › ${req.user.username}** ${resubmit ? "re" : ""}enviou **<@${req.params.id}>**. [ <@&${server.role_ids.bot_verifier}> ]`);
+        return res.json({ success: true, message: "Seu bot já foi adicionado." })
     } catch (e) {
-        return res.json({ success: true, message: "Your bot has been added" })
+        return res.json({ success: true, message: "Seu bot já foi adicionado." })
     }
 });
 
