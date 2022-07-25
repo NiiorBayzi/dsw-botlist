@@ -8,7 +8,7 @@ $(document).ready(async function () {
       buttonsStyling: true
     })
     let { isConfirmed } = await swalWithBootstrapButtons.fire({
-      title: 'Tem certeza que quer votar desse robô?',
+      title: 'Tem certeza que quer votar nesse robô?',
       text: "Você não será capaz de votar pelas próximas 12 horas.",
       icon: 'info',
       showCancelButton: true,
