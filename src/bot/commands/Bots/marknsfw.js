@@ -11,9 +11,9 @@ module.exports = class extends Command {
     }
 
     async run(message, [user]) {
-        if (!user || !user.bot) return message.channel.send(`Ping a **bot** to mark as nsfw.`);
+        if (!user || !user.bot) return message.channel.send(`( <:dsw_mention:1000943619236175892> ) › Mencione um bot.`);
         let bot = await Bots.findOne({botid: user.id});
         await Bots.updateOne({ botid: user.id }, {$set: { nsfw: !bot.nsfw } })
-        message.channel.send(`👍 \`${user.tag}\` is marked as ${bot.nsfw ? "not" : ""} NSFW`)
+        message.channel.send(`( 🚫 ) › O bot \`${user.tag}\` foi marcado como ${bot.nsfw ? "não" : ""} NSFW.`)
     }
 };
