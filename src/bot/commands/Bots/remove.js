@@ -12,39 +12,39 @@ const reasons = {
     '5': 'Não responde a menção.',
     '6': 'Tem menos de 10 Comandos utilizáveis por qualquer membro.',
     '7': 'Tem mais de 8 Erros.',
-    '8': '',
-    '9': '',
-    '10': '',
-    '11': '',
-    '12': ''
+    '8': 'Não possui nenhum comando mostrando o dono.',
+    '9': 'Está em menos de 10 Servidores.',
+    '10': 'Tem conteúdos que prejudica o usuário.',
+    '11': 'Tem mais de 5 Comandos copiados de outros bots.',
+    '12': 'O bot quebra alguma regra do servidor.'
 }
 var modLog;
 
 module.exports = class extends Command {
     constructor(...args) {
         super(...args, {
-            name: 'remove',
+            name: 'remover',
             runIn: ['text'],
-            aliases: ["delete"],
+            aliases: ['delete', 'deletar', 'remove'],
             permissionLevel: 8,
-            botPerms: ["SEND_MESSAGES"],
-            description: "Remove a bot from the botlist",
+            botPerms: ['SEND_MESSAGES'],
+            description: 'Remove o bot dá botlist.',
             usage: '[Member:user]'
         });
     }
 
     async run(message, [Member]) {
-        if (!Member || !Member.bot) return message.channel.send(`You didn't ping a bot to remove.`)
+        if (!Member || !Member.bot) return message.channel.send(`**( <:dsw_wolfShare:998885362774581279> ) › ${message.author.username}**, você não mencionou um bot..`)
         let e = new MessageEmbed()
-            .setTitle('Reasons')
+            .setTitle('Motivos')
             .setColor(0x6b83aa)
-            .addField(`Removing bot`, `${Member}`)
+            .addField(`Removendo o bot `, `${Member}`)
         let cont = ``;
         for (let k in reasons) {
             let r = reasons[k];
-            cont += ` - **${k}**: ${r}\n`
+            cont += `\`[ ${k}. ]\` — ${r}\n`
         }
-        cont += `\nEnter a valid reason number or your own reason.`
+        cont += `\nEnvie um número válido ou seu próprio motivo.`
         e.setDescription(cont)
         message.channel.send(e);
         let filter = m => m.author.id === message.author.id;
@@ -54,7 +54,7 @@ module.exports = class extends Command {
         let r = collected.first().content;
         if (parseInt(reason)) {
             r = reasons[reason]
-            if (!r) return message.channel.send("Inavlid reason number.")
+            if (!r) return message.channel.send(`**( <:dsw_denied:1000944417353502831> ) › ${message.author.username}**, número inválido.`)
         }
 
         let bot = await Bots.findOne({ botid: Member.id }, { _id: false });
@@ -64,21 +64,21 @@ module.exports = class extends Command {
         if (!bot) return message.channel.send(`Unknown Error. Bot not found.`)
         let owners = [bot.owners.primary].concat(bot.owners.additional)
         e = new MessageEmbed()
-            .setTitle('Bot Removed')
-            .addField(`Bot`, `<@${bot.botid}>`, true)
-            .addField(`Owner`, owners.map(x => x ? `<@${x}>` : ""), true)
-            .addField("Mod", message.author, true)
-            .addField("Reason", r)
+            .setTitle('( <:dsw_denied:1000944417353502831> ) | Bot removido')
+            .addField('Bot', `${botUser?.username} \`( ${bot.botid} )\``, true)
+            .addField('Dono(s)', owners.map(x => x ? `<@${x}>` : ""), true)
+            .addField('Verificador', message.author, true)
+            .addField('Motivo', r)
             .setThumbnail(botUser.displayAvatarURL({format: "png", size: 256}))
             .setTimestamp()
             .setColor(0xffaa00)
         modLog.send(e)
         modLog.send(owners.map(x => x ? `<@${x}>` : "")).then(m => { m.delete() });
-        message.channel.send(`Removed <@${bot.botid}> Check <#${mod_log_id}>.`)
+        message.channel.send(`**( <:dsw_denied:1000944417353502831> ) › ${message.author.username}**, O bot ${botUser?.username} foi reprovado. Check <#${mod_log_id}>.`)
         
         owners = await message.guild.members.fetch({user: owners})
         owners.forEach(o => {
-            o.send(`Your bot ${bot.username} has been removed:\n>>> ${r}`)
+            o.send(`**( <:dsw_denied:1000944417353502831> ) ›** O seu bot ${bot.username} foi removido da DSW:\n>>> ${r}`)
         })
         if (!message.client.users.cache.find(u => u.id === bot.botid).bot) return;
         try {
