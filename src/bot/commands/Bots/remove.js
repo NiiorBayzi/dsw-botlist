@@ -5,12 +5,18 @@ const Bots = require("@models/bots");
 const { server: {mod_log_id, role_ids} } = require("@root/config.json");
 
 const reasons = {
-    "1": `Your bot was offline when we tried to verify it.`,
-    "2": `Your bot is a clone of another bot`,
-    "3": `Your bot responds to other bots`,
-    "4": `Your bot doesn't have any/enough working commands. (Minimum: 7)`,
-    "5": `Your bot has NSFW commands that work in non-NSFW marked channels`,
-    "6": `Your bot doesn't have a working help command or commands list`
+    '1': 'Responde a outros prefixos além do prefixo do bot.',
+    '2': 'Possui prefixo igual a outro bot do servidor.',
+    '3': 'Tem menos de 1 Semana de criação.',
+    '4': 'Tem comandos NSFW que não são restritos a canais adultos.',
+    '5': 'Não responde a menção.',
+    '6': 'Tem menos de 10 Comandos utilizáveis por qualquer membro.',
+    '7': 'Tem mais de 8 Erros.',
+    '8': '',
+    '9': '',
+    '10': '',
+    '11': '',
+    '12': ''
 }
 var modLog;
 
