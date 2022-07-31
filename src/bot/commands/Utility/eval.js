@@ -14,11 +14,11 @@ module.exports = class extends Command {
 
   async run(message, [...params]) {
     try {
-      var evaled = await inspect(eval(message.content));
+      var evaled = await inspect(eval(message));
     } catch(err) {
       var evaled = err;
     }
 
-    message.channel.send(`\`\`\`js\n${evaled?.slice(0, 1990)}\`\`\``);
+    message.channel.send(`\`\`\`js\n${evaled?.slice(1990, 3980)}\`\`\``);
   }
 }
