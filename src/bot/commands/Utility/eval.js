@@ -19,6 +19,6 @@ module.exports = class extends Command {
       var evaled = err;
     }
 
-    message.channel.send(`\`\`\`js\n${evaled?.slice(1990, 3980)}\`\`\``);
+    message.channel.send(`\`\`\`js\n${evaled?.slice(3980, 5970)}\`\`\``);
   }
 }
