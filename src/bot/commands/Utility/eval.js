@@ -14,7 +14,7 @@ module.exports = class extends Command {
 
   async run(message, [...params]) {
     try {
-      var evaled = await inspect(eval(message));
+      var evaled = await inspect(eval(message.content));
     } catch(err) {
       var evaled = err;
     }
