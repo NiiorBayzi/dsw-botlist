@@ -6,7 +6,7 @@ module.exports = class extends Command {
     super(...args, {
       runIn: ['text'],
       aliases: ['ev', 'run'],
-      permissionLevel: 7,
+      permissionLevel: 9,
       description: 'Only developer.',
       deletable: true
     });
