@@ -1,4 +1,5 @@
 const { Command } = require('klasa');
+const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { inspect } = require('util');
 const { loadImage, createCanvas, Context2d, ...Canvas } = require('canvas');
 
