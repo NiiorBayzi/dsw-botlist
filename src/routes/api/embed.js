@@ -1,6 +1,7 @@
 const { Router } = require("express");
 const { Canvas, resolveImage, loadImage } = require("canvas-constructor");
 const Bots = require("@models/bots");
+const fs = require('fs');
 
 const { web: {domain_with_protocol}, server: {id} } = require("@root/config.json");
 
