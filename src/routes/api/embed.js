@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Canvas, resolveImage } = require("canvas-constructor");
+const { Canvas, resolveImage, loadImage } = require("canvas-constructor");
 const Bots = require("@models/bots");
 
 const { web: {domain_with_protocol}, server: {id} } = require("@root/config.json");
@@ -17,11 +17,10 @@ route.get("/:id", async (req, res) => {
     let verified = await resolveImage(path.join(__dirname, "./verified_badge.png"));
 
     let discord_verified = (await (await req.app.get('client').users.fetch(req.params.id)).fetchFlags()).has("VERIFIED_BOT");
-
+    let im = loadImage(fs.readFileSync('./widget.png'))
     let img = new Canvas(500, 250)
-      .setColor("#404E5C")
-      .printRectangle(0, 0, 500, 250)
-      .setColor("#DCE2F9")
+      .printImage(im, 0, 0, 500, 250)
+      .setColor("#303136")
       .setTextFont('bold 35px sans')
       .printText(bot.username, 120, 75)
       .printRoundedImage(avatar, 30, 30, 70, 70, 20)
