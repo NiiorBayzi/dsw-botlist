@@ -18,7 +18,7 @@ route.get("/:id", async (req, res) => {
 
     const canvas = Canvas.createCanvas(295, 171);
     const context = canvas.getContext('2d');
-    const background = await Canvas.loadImage('./widget.png');
+    const background = await Canvas.loadImage(`${domain_with_protocol}${__dirname}/widget.png`);
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
     
 
