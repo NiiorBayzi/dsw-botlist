@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Canvas, resolveImage, loadImage } = require("canvas-constructor");
+const Canvas = require("@napi-rs/canvas");
 const Bots = require("@models/bots");
 const fs = require('fs');
 
@@ -18,34 +18,17 @@ route.get("/:id", async (req, res) => {
     let verified = await resolveImage(path.join(__dirname, "./verified_badge.png"));
 
     let discord_verified = (await (await req.app.get('client').users.fetch(req.params.id)).fetchFlags()).has("VERIFIED_BOT");
-    let im = fs.readFileSync(__dirname + '/widget.png')
 
-    let img = new Canvas(500, 250)
-      .printImage(im, 0, 0, 500, 250)
-      .setColor("#5865f2")
-      .setTextFont('bold 35px sans')
-      .printText(bot.username, 120, 75)
-      .printRoundedImage(avatar, 30, 30, 70, 70, 20)
-      .setTextAlign("left")
-      .setTextFont('bold 12px Verdana')
-    if (bot.servers[bot.servers.length-1])
-      img.printText(`${bot.servers[bot.servers.length-1].count} servers | ${bot.likes} ❤️`, 30, 125);
-    if (discord_verified)
-      img.printImage(verified, 420, 55)
-    img
-      .printText(`Prefix: ${bot.prefix}`, 30, 145)
-      .setTextFont('normal 15px Verdana')
-      .printWrappedText(bot.description, 30, 175, 440, 15)
-      
-      .setTextFont('bold 12px sans-serif')
-      .printText(owner.user.tag, 10, 245)
-      .setTextAlign("right")
-      .printText(domain_with_protocol, 490, 245);
+    const canvas = Canvas.createCanvas(295, 171);
+    const context = canvas.getContext('2d');
+    const background = await Canvas.loadImage('./widget.png');
+    context.drawImage(background, 0, 0, canvas.width, canvas.height);
+    
 
     res.writeHead(200, {
       "Content-Type": "image/png"
     });
-    res.end(await img.toBuffer(), "binary");
+    res.end(await canvas.encode('png'), "binary");
   } catch (e) {
     throw e
     res.sendStatus(500);
