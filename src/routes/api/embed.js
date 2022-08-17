@@ -16,7 +16,7 @@ route.get("/:id", async (req, res) => {
     let owner = await req.app.get("client").guilds.cache.get(id).members.fetch(bot.owners.primary);
     let discord_verified = (await (await req.app.get('client').users.fetch(req.params.id)).fetchFlags()).has("VERIFIED_BOT");
 
-    const canvas = Canvas.createCanvas(295, 171);
+    const canvas = Canvas.createCanvas(295 + 300, 171 + 300);
     const context = canvas.getContext('2d');
     const background = await Canvas.loadImage(`${__dirname}/widget.png`);
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
