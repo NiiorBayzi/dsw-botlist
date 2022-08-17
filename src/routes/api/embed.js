@@ -1,5 +1,5 @@
 const { Router } = require("express");
-const { Canvas, resolveImage, loadImage } = require("canvas-constructor");
+const { Canvas, resolveImage, loadImage } = require("canvas-constructor/napi-rs");
 const Bots = require("@models/bots");
 const fs = require('fs');
 
