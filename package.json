@@ -27,7 +27,8 @@
         "recaptcha2": "^1.3.3",
         "sanitize-html": "^2.3.3",
         "util": "^0.12.4",
-        "napi-rs": "^0.3.10"
+        "@napi-rs/canvas": "^0.1.28",
+        "skia-canvas":"^1.0.0"
     },
     "devDependencies": {
         "nodemon": "2.0.7"
