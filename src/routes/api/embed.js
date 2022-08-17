@@ -21,7 +21,7 @@ route.get("/:id", async (req, res) => {
     let im = fs.readFileSync(__dirname + '/widget.png')
 
     let img = new Canvas(500, 250)
-      .addImage(im, 0, 0, 500, 250)
+      .printImage(im, 0, 0, 500, 250)
       .setColor("#5865f2")
       .setTextFont('bold 35px sans')
       .printText(bot.username, 120, 75)
