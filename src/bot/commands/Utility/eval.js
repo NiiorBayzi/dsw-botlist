@@ -16,10 +16,24 @@ module.exports = class extends Command {
   }
 
   async run(message, [...params]) {
-    let evaled;
-    evaled = await inspect(eval(message.args?.join(' ')).catch((err) => { evaled = err }));
-    evaled = `${evaled}`;
+    try {
+      let code = args.join(" ");
+      let res;
+      if (code.startsWith("--o ")) {
+        args.shift();
+        code = args.join(" ");
+        this.main = client;
+        this.main.message = message;
+        this.main.message.args = args;
+        this.main.Canvas = Canvas;
+        res = require('util').inspect(await Object.getPrototypeOf(async () => { }).constructor(code)());
+      } else {
+        res = await require("util").inspect(eval(code));
+      }
 
-    message.channel.send(`\`\`\`js\n${evaled.slice(0, 1990)}\`\`\``);
+      message.channel.send(`\`\`\`js\n${res.slice(0, 1990).replaceAll(client.token, "/* Token */")}\`\`\``)
+    } catch (err) {
+      message.channel.send(`\`\`\`js\n${err}\`\`\``)
+    }
   }
 }
