@@ -20,8 +20,8 @@ module.exports = class extends Command {
       let code = message.args?.join(" ");
       let res;
       if (code.startsWith("--o ")) {
-        args.shift();
-        code = args.join(" ");
+        message.args?.shift();
+        code = message.args?.join(" ");
         this.main = client;
         this.main.message = message;
         this.main.message.args = message.args;
