@@ -25,7 +25,7 @@ route.get("/:id", async (req, res) => {
     const avatar = await Canvas.loadImage(febot.displayAvatarURL({ format: 'png' }));
     context.drawImage(avatar, 0, 0, 200, 200);
     console.log(`${febot}`)
-    console.log(`{context}`)
+    console.log(`${context}`)
     
 
     res.writeHead(200, {
