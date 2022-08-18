@@ -20,6 +20,9 @@ route.get("/:id", async (req, res) => {
     const context = canvas.getContext('2d');
     const background = await Canvas.loadImage(`${__dirname}/widget.png`);
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
+
+    const avatar = await Canvas.loadImage(bot.logo);
+    context.drawImage(avatar, -178, -38, 120, 120);
     
 
     res.writeHead(200, {
