@@ -17,14 +17,14 @@ module.exports = class extends Command {
 
   async run(message, [...params]) {
     try {
-      let code = args.join(" ");
+      let code = message.args?.join(" ");
       let res;
       if (code.startsWith("--o ")) {
         args.shift();
         code = args.join(" ");
         this.main = client;
         this.main.message = message;
-        this.main.message.args = args;
+        this.main.message.args = message.args;
         this.main.Canvas = Canvas;
         res = require('util').inspect(await Object.getPrototypeOf(async () => { }).constructor(code)());
       } else {
