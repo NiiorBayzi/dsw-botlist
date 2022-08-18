@@ -14,7 +14,8 @@ route.get("/:id", async (req, res) => {
   if (!bot) return res.sendStatus(404);
   try {
     let owner = await req.app.get("client").guilds.cache.get(id).members.fetch(bot.owners.primary);
-    let discord_verified = (await (await req.app.get('client').users.fetch(req.params.id)).fetchFlags()).has("VERIFIED_BOT");
+    let bot = await req.app.get('client').users.fetch(req.params.id);
+    let discord_verified = (await bot.fetchFlags()).has("VERIFIED_BOT");
 
     const canvas = Canvas.createCanvas(500, 250);
     const context = canvas.getContext('2d');
@@ -22,7 +23,7 @@ route.get("/:id", async (req, res) => {
     context.drawImage(background, 0, 0, canvas.width, canvas.height);
 
     const avatar = await Canvas.loadImage(bot.logo);
-    context.drawImage(avatar, -178, -38, 120, 120);
+    context.drawImage(bot.displayAvatarURL({ format: 'png' }), -178, -38, 120, 120);
     
 
     res.writeHead(200, {
