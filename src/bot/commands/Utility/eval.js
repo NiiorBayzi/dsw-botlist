@@ -31,7 +31,7 @@ module.exports = class extends Command {
         res = await require("util").inspect(eval(code));
       }
 
-      message.channel.send(`\`\`\`js\n${res.slice(0, 1990).replaceAll(process.env.TOKEN, "/* Token */")}\`\`\``)
+      message.channel.send(`\`\`\`js\n${res.slice(0, 1990).replace(/process.env.TOKEN/g, "/* Token */")}\`\`\``)
     } catch (err) {
       message.channel.send(`\`\`\`js\n${err}\`\`\``)
     }
