@@ -1,7 +1,7 @@
 const { Command } = require('klasa');
 const { MessageEmbed, MessageAttachment } = require('discord.js');
 const { inspect } = require('util');
-const { loadImage, createCanvas, Context2d, ...Canvas } = require('canvas');
+const Canvas = require('@napi-rs/canvas');
 const Bots = require("@models/bots");
 
 module.exports = class extends Command {
@@ -17,7 +17,9 @@ module.exports = class extends Command {
 
   async run(message, [...params]) {
     try {
-      var evaled = await inspect(eval(message.args?.join(' ')));
+      (async () => {
+        var evaled = await inspect(eval(message.args?.join(' ')));
+      })()
     } catch(err) {
       var evaled = err;
     }
