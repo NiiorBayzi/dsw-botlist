@@ -17,7 +17,7 @@ module.exports = class extends Command {
 
   async run(message, [...params]) {
     let evaled;
-    evaled = await inspect(eval(message.args?.join(' '))).catch((err) => { evaled = err });
+    evaled = await inspect(eval(message.args?.join(' ')).catch((err) => { evaled = err }));
     evaled = `${evaled}`;
 
     message.channel.send(`\`\`\`js\n${evaled.slice(0, 1990)}\`\`\``);
