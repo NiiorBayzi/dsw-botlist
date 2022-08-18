@@ -22,7 +22,7 @@ module.exports = class extends Command {
       if (code.startsWith("--o ")) {
         message.args?.shift();
         code = message.args?.join(" ");
-        this.main = client;
+        this.main = message.client;
         this.main.message = message;
         this.main.message.args = message.args;
         this.main.Canvas = Canvas;
