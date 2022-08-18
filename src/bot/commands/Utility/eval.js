@@ -22,10 +22,9 @@ module.exports = class extends Command {
       if (code.startsWith("--o ")) {
         message.args?.shift();
         code = message.args?.join(" ");
-        this.main = message.client;
-        this.main.message = message;
-        this.main.message.args = message.args;
-        this.main.Canvas = Canvas;
+        this.client = message.client;
+        this.message = message;
+        this.Canvas = Canvas;
         res = require('util').inspect(await Object.getPrototypeOf(async () => { }).constructor(code)());
       } else {
         res = await require("util").inspect(eval(code));
